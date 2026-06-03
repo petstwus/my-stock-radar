@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import pandas_ta as ta
 import yfinance as yf
 from datetime import datetime
 import requests
