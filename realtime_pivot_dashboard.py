@@ -184,7 +184,7 @@ if user_input:
                     st.info(f"**目前多空狀態：** {status_tag}")
                     st.warning(f"**⚡ 盤中即時操盤建議：** {action_advice}")
                     
-                    # ───【新增新功能：繪製專業 KD + 三關價 K 線圖（取最近一個月顯示）】───
+                    # ───【繪製專業 KD + 三關價 K 線圖（取最近一個月顯示）】───
                     st.write("### 📈 近一個月專業技術線圖 (K線 + 三關價 + KD指標)")
                     plot_df = df.iloc[-22:].copy() # 取最近一個月大約 22 個交易日
                     
@@ -193,12 +193,12 @@ if user_input:
                                         vertical_spacing=0.1, 
                                         row_width=[0.4, 0.6])
                     
-                    # 1. 主圖：K線圖 (遵循台股紅漲綠跌習慣)
+                    # 1. 主圖：K線圖 (已修正底線 Bug)
                     fig.add_trace(gr.Candlestick(
                         x=plot_df.index, open=plot_df['open'], high=plot_df['high'],
                         low=plot_df['low'], close=plot_df['close'], name='K線',
-                        increasing_line_color='#dc3545', increasing_fill_color='#dc3545',
-                        decreasing_line_color='#28a745', decreasing_fill_color='#28a745'
+                        increasing_line_color='#dc3545', increasing_fillcolor='#dc3545',
+                        decreasing_line_color='#28a745', decreasing_fillcolor='#28a745'
                     ), row=1, col=1)
                     
                     # 疊加當天最新的三關價水平防守線（用虛線標示在K線圖上做對照）
